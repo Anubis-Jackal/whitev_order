@@ -5,4 +5,4 @@ To access the deployed website, visit [WhiteV Order](https://whitevorder.herokua
 
 Feel free to use any of my code or suggest any issues. The website is not actually in use at the moment, but hopefully it will find an application some day. 
 
-Languages/tools used: HTML, CSS, JS, Node.js, Express, MongoDB, Heroku, Bootstrap.
+Languages/tools used: HTML, CSS, JS, Node.js, Express, Passport, MongoDB, Heroku, Bootstrap.
