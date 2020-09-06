@@ -1,0 +1,91 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 class="title">Edit Order <%= order._id %></h1>
+        <div class="orderform">
+        <form action="/orders/<%= order._id%>?_method=PUT" method="POST">
+            <div class="form-group">
+                <p>Name:</p>
+                <input class="form-control" type="text" name="order[sName]" placeholder="Sender's name" value="<%= order.sName %>" required>
+            </div>
+            <div class="form-group">
+                <p>Class:</p>
+                <input class="form-control" type="text" name="order[sClass]" placeholder="Sender's class" value="<%= order.sClass %>" required>
+                <p><em>Note: If you are a teacher you do not have to fill this out.</em></p>
+            </div>
+            <div class="form-group">
+                <p>Recipient Name:</p>
+                <input class="form-control" type="text" name="order[rName]" placeholder="Recipient's name" value="<%= order.rName %>" required>
+            </div>
+            <div class="form-group">
+                <p>Recipient Class:</p>
+                <input class="form-control" type="text" name="order[rClass]" placeholder="Recipient's class" value="<%= order.rClass %>" required>
+                <p><em>Note: If the recipient is a teacher please indicate his/her office.</em></p>
+            </div>
+            <div class="form-group">
+                <p>Roses (<%= price.rosePrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[roseNum]" id="order[roseNum]" placeholder="Number of Roses you wish to purchase" value="<%= order.roseNum %>">
+            </div>
+            <div class="form-group">
+                <p>Daisies (<%= price.daisyPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[daisyNum]" id="order[daisyNum]"  placeholder="Number of Daisys you wish to purchase" value="<%= order.daisyNum %>">
+            </div>
+            <div class="form-group">
+                <p>Sunflowers (<%= price.sunflowerPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[sunflowerNum]" id="order[sunflowerNum]" placeholder="Number of Sunflowers you wish to purchase" value="<%= order.sunflowerNum %>">
+            </div>
+            <div class="form-group">
+                <p>Succulents (<%= price.succulentPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[succulentNum]" id="order[succulentNum]" placeholder="Number of Succulents you wish to purchase" value="<%= order.succulentNum %>">
+            </div>
+            <div class="form-group">
+                <p>11 Rose Bouquets (<%= price.rose11Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose11Num]" id="order[rose11Num]" placeholder="Number of 11 Rose Bouquets you wish to purchase" value="<%= order.rose11Num %>">
+            </div>
+            <div class="form-group">
+                <p>Rose Boxes (<%= price.roseboxPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[roseboxNum]" id="order[roseboxNum]"  placeholder="Number of Rose Boxes you wish to purchase" value="<%= order.roseboxNum %>">
+            </div>
+            <div class="form-group">
+                <p>52 Rose Bouquets (<%= price.rose52Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose52Num]" id="order[rose52Num]" placeholder="Number of 52 Rose Bouquets you wish to purchase" value="<%= order.rose52Num %>">
+            </div>
+            <div class="form-group">
+                <p>99 Rose Bouquets (<%= price.rose99Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose99Num]" id="order[rose99Num]" placeholder="Number of 99 Rose Bouquets you wish to purchase" value="<%= order.rose99Num %>">
+            </div>
+            
+            <!--if statements that configure select inputs to correspond to database values-->
+            <div class ="form-group">
+                <p>Anonymous?</p>
+                <select name ="order[anonymous]">
+                    <% if (order.anonymous === "Yes"){ %>
+                        <option value="Yes" selected>Yes</option>
+                        <option value="No">No</option>
+                    <% } else { %>
+                        <option value="No" selected>No</option>
+                        <option value="Yes">Yes</option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="form-group">
+                <p>Status:</p>
+                <select name="order[paymentStatus]">
+                    <% if (order.paymentStatus === "Paid"){ %>
+                        <option value="Paid" selected>Paid</option>
+                        <option value="Not Paid">Not Paid</option>
+                    <% } else { %>
+                        <option value="Not Paid" selected>Not Paid</option>
+                        <option value="Paid">Paid</option>
+                    <% } %>
+                </select>
+            </div>
+            <button class="btn-lg btn-default btn-block btn-primary">Update Order</button>
+        </form>
+        <a href="#" onClick="history.go(-1)">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,54 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class ="container">
+        <h1>Prices</h1>
+        <p>View and adjust prices here</p>
+        <p>
+            <a class="btn btn-info btn-lg" href="/orders">All Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/orderinfo">Order Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/flowerinfo">Flower Info</a>
+            <a class="btn btn-primary btn-lg" href="/orders/new">Add New Order</a>
+            <a class="btn btn-success btn-lg" href="/prices">View/Edit Prices</a>
+        </p>
+        </div>
+    </header>
+    <div class = "row col-lg-12 text-center">
+        <table>
+        <thead>
+            <tr>
+                <th>Rose</th>
+                <th>Daisy</th>
+                <th>Sunflower</th>
+                <th>Succulent</th>
+                <th>11 Rose</th>
+                <th>Rose Box</th>
+                <th>52 Rose</th>
+                <th>99 Rose</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                <!--prints out current prices-->
+                <tr>
+                    <td><%= price.rosePrice %></td>
+                    <td><%= price.daisyPrice %></td>
+                    <td><%= price.sunflowerPrice %></td>
+                    <td><%= price.succulentPrice %></td>
+                    <td><%= price.rose11Price %></td>
+                    <td><%= price.roseboxPrice %></td>
+                    <td><%= price.rose52Price %></td>
+                    <td><%= price.rose99Price %></td>
+                    <td>
+                        <a class="btn btn-info btn-xs" href="/prices/edit">Edit</a>
+                    </td>
+                </tr>
+        </tbody>
+        </table>
+        <p> </p>
+        <a href="/orders">Go Back</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>

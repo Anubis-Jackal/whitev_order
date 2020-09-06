@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 class="title">Edit Prices</h1>
+        <div class="orderform">
+        <form action="/prices?_method=PUT" method="POST">
+            <div class="form-group">
+                <p>Roses (<%= price.rosePrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[rosePrice]" id="price[rosePrice]" placeholder="Rose Price" value="<%= price.rosePrice %>">
+            </div>
+            <div class="form-group">
+                <p>Daisys (<%= price.daisyPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[daisyPrice]" id="price[daisyPrice]"  placeholder="Daisy Price" value="<%= price.daisyPrice %>">
+            </div>
+            <div class="form-group">
+                <p>Sunflowers (<%= price.sunflowerPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[sunflowerPrice]" id="price[sunflowerPrice]" placeholder="Sunflower Price" value="<%= price.sunflowerPrice %>">
+            </div>
+            <div class="form-group">
+                <p>Succulents (<%= price.succulentPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[succulentPrice]" id="price[succulentPrice]" placeholder="Succulent Price" value="<%= price.succulentPrice %>">
+            </div>
+            <div class="form-group">
+                <p>11 Rose Bouquets (<%= price.rose11Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[rose11Price]" id="price[rose11Price]" placeholder="11 Rose Bouquet Price" value="<%= price.rose11Price %>">
+            </div>
+            <div class="form-group">
+                <p>Rose Boxes (<%= price.roseboxPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[roseboxPrice]" id="price[roseboxPrice]"  placeholder="Rose Box Price" value="<%= price.roseboxPrice %>">
+            </div>
+            <div class="form-group">
+                <p>52 Rose Bouquets (<%= price.rose52Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[rose52Price]" id="price[rose52Price]" placeholder="52 Rose Bouquet Price" value="<%= price.rose52Price %>">
+            </div>
+            <div class="form-group">
+                <p>99 Rose Bouquets (<%= price.rose99Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="price[rose99Price]" id="price[rose99Price]" placeholder="99 Rose Bouquet Price" value="<%= price.rose99Price %>">
+            </div>
+            <button class="btn-lg btn-default btn-block btn-primary">Update Prices</button>
+        </form>
+        <a href="#" onClick="history.go(-1)">Go Back</a>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

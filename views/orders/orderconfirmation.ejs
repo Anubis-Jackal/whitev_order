@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 class="title">Order Confirmation</h1>
+        <h2 class="title">Your order number is <%= order.id %>.</h2>
+        <div class="orderform">
+            <form action="/orders/<%= order._id%>/orderconfirmation?_method=PUT" method="POST">
+                <div class="form-group">
+                    <p>Your total price is (RMB): </p> 
+                    <!--calculates total price-->
+                    <input class="form-control" type="number" min="0" name="order[totalPrice]" placeholder="Total Price" value="<%= price.rosePrice * order.roseNum + price.daisyPrice * order.daisyNum + price.sunflowerPrice * order.sunflowerNum + price.succulentPrice * order.succulentNum + 
+                    price.rose11Price * order.rose11Num + price.roseboxPrice * order.roseboxNum + price.rose52Price * order.rose52Num + price.rose99Price * order.rose99Num %>" readonly>
+                    <p>Please record your order number and total price; you will need them when you pay for your order in person (a screenshot would be wise). And no, you won't have to read out the whole number before we find your order. :)</p>
+                    <p>*IMPORTANT: PLEASE PRESS THIS BUTTON AFTER YOU HAVE CONFIRMED AND RECORDED THE ABOVE INFORMATION!</p>
+                </div>
+                <button class="btn-lg btn-default btn-block btn-primary">I Confirm</button>
+                <a href="#" onClick="history.go(-1)">Go Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

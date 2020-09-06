@@ -1,0 +1,62 @@
+<% include ../partials/header %>
+    
+<div class="container main">
+    <header class="jumbotron">
+        <div class ="container">
+        <h1>Order Info</h1>
+        <p>General order information and their payment status</p>
+        <p>
+            <a class="btn btn-info btn-lg" href="/orders">All Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/orderinfo">Order Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/flowerinfo">Flower Info</a>
+            <a class="btn btn-primary btn-lg" href="/orders/new">Add New Order</a>
+            <a class="btn btn-success btn-lg" href="/prices">View/Edit Prices</a>
+        </p>
+        </div>
+    </header>
+    
+    <div class = "row col-lg-12 text-center">
+        <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Sender Name</th>
+                <th>Sender Class</th>
+                <th>Recipient Name</th>
+                <th>Recipient Class</th>
+                <th>Anonymous</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach(function(order){ %>
+                <!--prints out all order info onto table-->
+                <% if(order.totalPrice){ %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.sName %></td>
+                        <td><%= order.sClass %></td>
+                        <td><%= order.rName %></td>
+                        <td><%= order.rClass %></td>
+                        <td><%= order.anonymous %></td>
+                        <td><%= order.paymentStatus %></td>
+                        <td>
+                            <a class="btn btn-info btn-xs inner" href="/orders/<%= order._id %>">More Info</a>
+                            <a class="btn btn-success btn-xs inner" href="/orders/<%= order._id %>/edit">Edit</a>
+                            <form action="/orders/<%= order._id%>?_method=DELETE" method="POST"  id="delete">
+                                <button class="btn btn-danger btn-xs">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+        </table>
+        <p> </p>
+        <a href="#" onClick="history.go(-1)">Go Back</a>
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

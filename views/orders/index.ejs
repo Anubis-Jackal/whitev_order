@@ -1,0 +1,77 @@
+<% include ../partials/header %>
+    
+<div class="container main">
+    <header class="jumbotron">
+        <div class ="container">
+        <h1>Orders</h1>
+        <p>View and edit orders from these databases</p>
+        <p>
+            <a class="btn btn-info btn-lg" href="/orders">All Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/orderinfo">Order Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/flowerinfo">Flower Info</a>
+            <a class="btn btn-primary btn-lg" href="/orders/new">Add New Order</a>
+            <a class="btn btn-success btn-lg" href="/prices">View/Edit Prices</a>
+        </p>
+        </div>
+    </header>
+    
+    <div class = "row col-lg-12 text-center">
+        <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Sender Name</th>
+                <th>Sender Class</th>
+                <th>Recipient Name</th>
+                <th>Recipient Class</th>
+                <th>Rose</th>
+                <th>Daisy</th>
+                <th>Sunflower</th>
+                <th>Succulent</th>
+                <th>11 Rose</th>
+                <th>Rose Box</th>
+                <th>52 Rose</th>
+                <th>99 Rose</th>
+                <th>Total Price</th>
+                <th>Anonymous</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% orders.forEach(function(order){ %>
+                <!--prints out all the order information onto the table-->
+                <% if(order.totalPrice){ %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.sName %></td>
+                        <td><%= order.sClass %></td>
+                        <td><%= order.rName %></td>
+                        <td><%= order.rClass %></td>
+                        <td><%= order.roseNum %></td>
+                        <td><%= order.daisyNum %></td>
+                        <td><%= order.sunflowerNum %></td>
+                        <td><%= order.succulentNum %></td>
+                        <td><%= order.rose11Num %></td>
+                        <td><%= order.roseboxNum %></td>
+                        <td><%= order.rose52Num %></td>
+                        <td><%= order.rose99Num %></td>
+                        <td><%= order.totalPrice %></td>
+                        <td><%= order.anonymous %></td>
+                        <td><%= order.paymentStatus %></td>
+                        <td>
+                            <a class="btn btn-success btn-xs inner" href="/orders/<%= order._id %>/edit">Edit</a>
+                            <form action="/orders/<%= order._id%>?_method=DELETE" method="POST"  id="delete">
+                                <button class="btn btn-danger btn-xs">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<% include ../partials/footer %>

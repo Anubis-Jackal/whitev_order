@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <h1 class="title">Order Edit Confirmation</h1>
+        <h2 class="title">The order number is <%= order.id %>.</h2>
+        <div class="orderform">
+            <form action="/orders/<%= order._id%>/editconfirmation?_method=PUT" method="POST">
+                <div class="form-group">
+                    <!--total price calculation-->
+                    <p>The total price for this order is (RMB): </p> 
+                    <input class="form-control" type="number" min="0" name="order[totalPrice]" placeholder="Total Price" value="<%= price.rosePrice * order.roseNum + price.daisyPrice * order.daisyNum + price.sunflowerPrice * order.sunflowerNum + price.succulentPrice * order.succulentNum + 
+                    price.rose11Price * order.rose11Num + price.roseboxPrice * order.roseboxNum + price.rose52Price * order.rose52Num + price.rose99Price * order.rose99Num %>" readonly>
+                    <p>*IMPORTANT: PLEASE PRESS THIS BUTTON AFTER YOU HAVE CONFIRMED THE ABOVE INFORMATION!</p>
+                </div>
+                <button class="btn-lg btn-default btn-block btn-primary">I Confirm</button>
+                <a href="#" onClick="history.go(-1)">Go Back</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

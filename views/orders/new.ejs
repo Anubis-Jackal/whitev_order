@@ -1,0 +1,79 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 class="title">Create a New Order</h1>
+        <div class="orderform">
+        <form action="/orders" method="POST" id="neworder">
+            <div class="form-group">
+                <p>Name:</p>
+                <input class="form-control" type="text" name="order[sName]" placeholder="Sender's full name" required>
+            </div>
+            <div class="form-group">
+                <p>Class:</p>
+                <input class="form-control" type="text" name="order[sClass]" placeholder="Sender's class" required>
+                <p><em>Note: If you are a teacher you do not have to fill this out.</em></p>
+            </div>
+            <div class="form-group">
+                <p>Recipient Name:</p>
+                <input class="form-control" type="text" name="order[rName]" placeholder="Recipient's full name" required>
+            </div>
+            <div class="form-group">
+                <p>Recipient Class:</p>
+                <input class="form-control" type="text" name="order[rClass]" placeholder="Recipient's class" required>
+            </div>
+            <div class="form-group">
+                <p>Roses (<%= price.rosePrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[roseNum]" placeholder="Number of Roses you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>Daisies (<%= price.daisyPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[daisyNum]" placeholder="Number of Daisys you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>Sunflowers (<%= price.sunflowerPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[sunflowerNum]" placeholder="Number of Sunflowers you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>Succulents (<%= price.succulentPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[succulentNum]" placeholder="Number of Succulents you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>11 Rose Bouquets (<%= price.rose11Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose11Num]" placeholder="Number of 11 Rose Bouquets you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>Rose Boxes (<%= price.roseboxPrice %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[roseboxNum]" placeholder="Number of Rose Boxes you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>52 Rose Bouquets (<%= price.rose52Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose52Num]" placeholder="Number of 52 Rose Bouquets you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>99 Rose Bouquets (<%= price.rose99Price %>RMB):</p>
+                <input class="form-control" type="number" min="0" name="order[rose99Num]" placeholder="Number of 99 Rose Bouquets you wish to purchase" value="0">
+            </div>
+            <div class="form-group">
+                <p>Anonymous?</p>
+                <select name="order[anonymous]">
+                    <option value="No" selected>No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+            </div>
+            <!--placeholder that initializes paymentStatus value-->
+            <div class="form-group">
+                <p>Status:</p>
+                <input class="form-control" type="text" name="order[paymentStatus]" placeholder="Payment Status" value="Not Paid" readonly>
+            </div>
+            <button class="btn-lg btn-default btn-block btn-primary">Submit Order</button>
+        </form>
+        <a href="#" onClick="history.go(-1)">Go Back</a>
+        </div>
+    </div>
+</div>
+        
+<% include ../partials/footer %>
+
+    
+           

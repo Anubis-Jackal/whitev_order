@@ -1,0 +1,21 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <h1 class="title">Signup</h1>
+        <div class="orderform">
+            <form action="/register" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="password">
+                    <p><em>Note: This is for administrators only. If you are not an administrator, you do not have to signup. The ordering function does not require an account.</em></p>
+                </div>
+                <button class="btn-lg btn-default btn-block btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -1,0 +1,135 @@
+<% include ../partials/header %>
+    
+<div class="container main">
+    <header class="jumbotron">
+        <div class ="container">
+        <h1>Flower Info</h1>
+        <p>Flower types, quantities, and total prices</p>
+        <p>
+            <a class="btn btn-info btn-lg" href="/orders">All Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/orderinfo">Order Info</a>
+            <a class="btn btn-info btn-lg" href="/orders/flowerinfo">Flower Info</a>
+            <a class="btn btn-primary btn-lg" href="/orders/new">Add New Order</a>
+            <a class="btn btn-success btn-lg" href="/prices">View/Edit Prices</a>
+        </p>
+        </div>
+    </header>
+    
+    <div class = "row col-lg-12 text-center">
+        <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Rose</th>
+                <th>Daisy</th>
+                <th>Sunflower</th>
+                <th>Succulent</th>
+                <th>11 Rose</th>
+                <th>Rose Box</th>
+                <th>52 Rose</th>
+                <th>99 Rose</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <!--conditionals that check that only paid order information gets calculated into total quantity and price-->
+                <td>Total Quantity/Revenue</td>
+                <% var roseSum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    roseSum += order.roseNum; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= roseSum %></td>
+                <% var daisySum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    daisySum += order.daisyNum; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= daisySum %></td>
+                <% var sunflowerSum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    sunflowerSum += order.sunflowerNum; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= sunflowerSum %></td>
+                <% var succulentSum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    succulentSum += order.succulentNum; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= succulentSum %></td>
+                <% var rose11Sum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    rose11Sum += order.rose11Num; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= rose11Sum %></td>
+                <% var roseboxSum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    roseboxSum += order.roseboxNum; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= roseboxSum %></td>
+                <% var rose52Sum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    rose52Sum += order.rose52Num; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= rose52Sum %></td>
+                <% var rose99Sum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    rose99Sum += order.rose99Num; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= rose99Sum %></td>
+                <% var totalSum = 0; %>
+                <% orders.forEach(function(order){ %>
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                <%    totalSum += order.totalPrice; %>
+                <%  }  %>
+                <% }); %>
+                <td><%= totalSum %></td>
+                <td> </td>
+            </tr>
+            <% orders.forEach(function(order){ %>
+                <!--conditional that checks that only flower info from orders that have been paid for are shown in the table-->
+                <%  if(order.totalPrice && order.paymentStatus === "Paid"){ %>
+                    <tr>
+                        <td><%= order.id %></td>
+                        <td><%= order.roseNum %></td>
+                        <td><%= order.daisyNum %></td>
+                        <td><%= order.sunflowerNum %></td>
+                        <td><%= order.succulentNum %></td>
+                        <td><%= order.rose11Num %></td>
+                        <td><%= order.roseboxNum %></td>
+                        <td><%= order.rose52Num %></td>
+                        <td><%= order.rose99Num %></td>
+                        <td><%= order.totalPrice %></td>
+                        <td>
+                            <a class="btn btn-info btn-xs inner" href="/orders/<%= order._id %>">More Info</a>
+                            <a class="btn btn-success btn-xs inner" href="/orders/<%= order._id %>/edit">Edit</a>
+                            <form action="/orders/<%= order._id%>?_method=DELETE" method="POST"  id="delete">
+                                <button class="btn btn-danger btn-xs">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </tbody>
+        </table>
+        <p> </p>
+        <a href="#" onClick="history.go(-1)">Go Back</a>
+    </div>
+</div>
+
+<% include ../partials/footer %>
